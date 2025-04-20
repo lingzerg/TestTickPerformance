@@ -3,12 +3,13 @@
 
 #include "TickPerformanceSubsystem.h"
 
+TArray<FVector> Locations;
+
 
 void UTickPerformanceSubsystem::Tick(float DeltaTime)
 {
 	const int32 CurrentCount = tickActorList.Num();
 	
-	const int32 ChunkSize = 64; 
 	if (CurrentCount == 0)
 	{
 		return;
@@ -16,33 +17,20 @@ void UTickPerformanceSubsystem::Tick(float DeltaTime)
 	
 	if (isTestOptimization)
 	{
-		for (int32 i = 0; i < CurrentCount; i += ChunkSize)
+		for (int32 i = 0; i < CurrentCount; i++)
 		{
-			const int32 EndIndex = FMath::Min(i + ChunkSize, CurrentCount);
-			for (int32 j = i; j < EndIndex; ++j)
-			{
-				FVector RandomLocation = FVector(
-				FMath::RandRange(-5000, 5000),
-				FMath::RandRange(-5000, 5000),
-				FMath::RandRange(0, 1000)
-			);
-				tickActorList[j]->SetActorLocation(RandomLocation);
-			}
+			tickActorList[i]->SetActorLocation(Locations[FMath::RandRange(0, 100000)]);
 		}
 	} else
 	{
-		for (int32 i = 0; i < CurrentCount; i += ChunkSize)
+		for (int32 i = 0; i < CurrentCount; i ++)
 		{
-			const int32 EndIndex = FMath::Min(i + ChunkSize, CurrentCount);
-			for (int32 j = i; j < EndIndex; ++j)
-			{
-				FVector RandomLocation = FVector(
+			FVector RandomLocation = FVector(
 				FMath::RandRange(-5000, 5000),
 				FMath::RandRange(-5000, 5000),
 				FMath::RandRange(0, 1000)
-			);
-				tickActorList[j]->SetActorLocation(RandomLocation);
-			}
+				);
+			tickActorList[CurrentCount]->SetActorLocation(RandomLocation);
 		}
 	}
 
@@ -70,10 +58,19 @@ void UTickPerformanceSubsystem::SpawnActor(int count, TSubclassOf<AActor> Bluepr
 	}
 }
 
+
 void UTickPerformanceSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
- 	
+	Locations.SetNum(110000);
+	for(int i =0; i < 110000; i++)
+	{
+		Locations[i] = FVector(
+			FMath::FRand() * 10000.f - 5000.f,
+		FMath::FRand() * 10000.f - 5000.f,
+		FMath::FRand() * 1000.f
+		);
+	}
 }
 
 bool UTickPerformanceSubsystem::IsTickable() const
