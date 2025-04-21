@@ -39,13 +39,14 @@ void UTickPerformanceSubsystem::Tick(float DeltaTime)
 
 void UTickPerformanceSubsystem::SpawnActor(int count, TSubclassOf<AActor> BlueprintClass)
 {
-	
 	if (BlueprintClass)
 	{
 		for (int i = 0; i < count; i++)
 		{
+			FString NameStr = FGuid::NewGuid().ToString(); // 生成唯一GUID字符串
+			
 			FActorSpawnParameters SpawnParams;
-			FString NameStr = FString::Printf(TEXT("CollectTick_%d"), i); // 名称从当前池大小递增
+			//FString NameStr = FString::Printf(TEXT("CollectTick_%d"),i); // 名称从当前池大小递增
 			SpawnParams.Name = FName(*NameStr);
 			ATestCppCollectTickActor* spawn = GetWorld()->SpawnActor<ATestCppCollectTickActor>(
 			 BlueprintClass,
