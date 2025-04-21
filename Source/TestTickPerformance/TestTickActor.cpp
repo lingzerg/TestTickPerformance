@@ -16,9 +16,9 @@ void ATestTickActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	
 	FVector RandomLocation = FVector(
-		FMath::RandRange(-5000, 5000),
-		FMath::RandRange(-5000, 5000),
-		FMath::RandRange(0, 1000)
+		FMath::RandRange(0, 5000),
+		FMath::RandRange(0, 5000),
+		FMath::RandRange(0, 5000)
 	);
 	this->SetActorLocation(RandomLocation);
 }

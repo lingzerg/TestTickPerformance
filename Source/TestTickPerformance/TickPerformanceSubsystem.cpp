@@ -26,9 +26,9 @@ void UTickPerformanceSubsystem::Tick(float DeltaTime)
 		for (int32 i = 0; i < CurrentCount; i ++)
 		{
 			FVector RandomLocation = FVector(
-				FMath::RandRange(-5000, 5000),
-				FMath::RandRange(-5000, 5000),
-				FMath::RandRange(0, 1000)
+				FMath::RandRange(0, 5000),
+				FMath::RandRange(0, 5000),
+				FMath::RandRange(0, 5000)
 				);
 			tickActorList[i]->SetActorLocation(RandomLocation);
 		}
