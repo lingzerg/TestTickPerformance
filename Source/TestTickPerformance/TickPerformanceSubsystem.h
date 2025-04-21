@@ -18,8 +18,6 @@ class TESTTICKPERFORMANCE_API UTickPerformanceSubsystem : public UTickableWorldS
 public:
 	virtual void Tick(float DeltaTime) override;
 
-
-	
 	UFUNCTION(BlueprintCallable, Category = "TickPerformance")
 	void SpawnActor(int count,TSubclassOf<AActor> BlueprintClass);
 
