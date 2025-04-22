@@ -7,9 +7,9 @@ public class UpdataObj : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(
-            Random.Range(0.0f, 5000.0f),
-            Random.Range(0.0f, 5000.0f),
-            Random.Range(0.0f, 5000.0f)
+            Random.Range(0.0f, 500.0f),
+            Random.Range(0.0f, 500.0f),
+            Random.Range(0.0f, 500.0f)
         );
     }
 }

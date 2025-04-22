@@ -37,7 +37,6 @@ public class MainController : MonoBehaviour
             {
                 UpdataObjList.Add(obj);
             }
-            
         }
     }
     
@@ -53,5 +52,20 @@ public class MainController : MonoBehaviour
                 CollectObjList.Add(obj);
             }
         }
+    }
+
+    public void Clear()
+    {
+        foreach (var item in UpdataObjList)
+        {
+            DestroyImmediate(item);
+        }
+        UpdataObjList.Clear();
+        foreach (var item in CollectObjList)
+        {
+            DestroyImmediate(item.gameObject);
+        }
+        
+        CollectObjList.Clear();
     }
 }
