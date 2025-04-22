@@ -19,7 +19,7 @@ void UTickPerformanceSubsystem::Tick(float DeltaTime)
 	{
 		for (int32 i = 0; i < CurrentCount; i++)
 		{
-			tickActorList[i]->SetActorLocation(Locations[FMath::RandRange(0, 100000)]);
+			tickActorList[i]->SetActorLocation(Locations[FMath::RandRange(0, 100000)],false);
 		}
 	} else
 	{
@@ -30,7 +30,7 @@ void UTickPerformanceSubsystem::Tick(float DeltaTime)
 				FMath::RandRange(0, 5000),
 				FMath::RandRange(0, 5000)
 				);
-			tickActorList[i]->SetActorLocation(RandomLocation);
+			tickActorList[i]->SetActorLocation(RandomLocation,false);
 		}
 	}
 

@@ -20,5 +20,5 @@ void ATestTickActor::Tick(float DeltaTime)
 		FMath::RandRange(0, 5000),
 		FMath::RandRange(0, 5000)
 	);
-	this->SetActorLocation(RandomLocation);
+	this->SetActorLocation(RandomLocation,false);
 }
