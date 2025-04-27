@@ -21,11 +21,25 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "TickPerformance")
 	void SpawnActor(int count,TSubclassOf<AActor> BlueprintClass);
 
+	
+	UFUNCTION(BlueprintCallable, Category = "TickPerformance")
+	int getInstanceCount();
+	UFUNCTION(BlueprintCallable, Category = "TickPerformance")
+	void SpawnInstance(int count,TSubclassOf<AActor> BlueprintClass);
+	
+	UFUNCTION(BlueprintCallable, Category = "TickPerformance")
+	void Clear();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TickPerformance")
 	bool isTestOptimization = false;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TickPerformance")
 	TArray<ATestCppCollectTickActor*> tickActorList;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TickPerformance")
+	TArray<ATestCppCollectTickActor*> tickInstanceActorList;
+	UPROPERTY()
+	TArray<UInstancedStaticMeshComponent*> ManagedISMs;
 
 	
 	virtual TStatId GetStatId() const override;

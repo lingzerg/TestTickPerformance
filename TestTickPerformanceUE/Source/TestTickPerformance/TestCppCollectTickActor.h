@@ -14,11 +14,10 @@ class TESTTICKPERFORMANCE_API ATestCppCollectTickActor : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ATestCppCollectTickActor();
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	//void RandomLocation(float DeltaTime);
+	void RandomLocation(float DeltaTime);
 	
 };

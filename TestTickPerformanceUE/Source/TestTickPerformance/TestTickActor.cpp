@@ -8,6 +8,12 @@ ATestTickActor::ATestTickActor()
 void ATestTickActor::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	SetReplicates(false);
+	SetReplicateMovement(false);
+	SetActorEnableCollision(false);
+	
+	SetActorEnableCollision(false);
 }
 
 void ATestTickActor::Tick(float DeltaTime)
@@ -21,5 +27,5 @@ void ATestTickActor::Tick(float DeltaTime)
 		FMath::RandRange(0, 50000)
 	);
 	this->SetActorLocation(RandomLocation,false,nullptr, 
-		ETeleportType::None);
+		ETeleportType::TeleportPhysics);
 }
